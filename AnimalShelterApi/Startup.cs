@@ -22,7 +22,7 @@ namespace AnimalShelterApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AnimalShelterApiContext>(opt =>
-                opt.UseMySql(Configuration["ConnectionStrings:DefaultConnections"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+                opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
