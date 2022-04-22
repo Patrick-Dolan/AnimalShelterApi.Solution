@@ -18,9 +18,16 @@ namespace AnimalShelterApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Animal>>> Get()
+    public async Task<ActionResult<IEnumerable<Animal>>> Get(string petType)
     {
-      return await _db.Animals.ToListAsync();
+      var query = _db.Animals.AsQueryable();
+
+      if (petType != null)
+      {
+        query = query.Where(entry => entry.PetType == petType);
+      }
+
+      return await query.ToListAsync();
     }
 
     [HttpPost]
