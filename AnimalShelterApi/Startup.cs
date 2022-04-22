@@ -32,7 +32,21 @@ namespace AnimalShelterApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimalShelterApi", Version = "v1" });
             });
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Animal Shelter API";
+                    document.Info.Description = "An API for lists of available cats and dogs at a shelter.";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Patrick Dolan",
+                        Email = "Dolanp1992@gmail.com",
+                        Url = "https://github.com/Patrick-Dolan"
+                    };
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
