@@ -18,7 +18,7 @@ namespace AnimalShelterApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Animal>>> Get(string petType, string breed)
+    public async Task<ActionResult<IEnumerable<Animal>>> Get(string petType, string breed, int minimumAge, int maxAge)
     {
       var query = _db.Animals.AsQueryable();
 
@@ -30,6 +30,16 @@ namespace AnimalShelterApi.Controllers
       if (breed != null)
       {
         query = query.Where(entry => entry.Breed == breed);
+      }
+
+      if (minimumAge > 0)
+      {
+        query = query.Where(entry => entry.Age >= minimumAge);
+      }
+
+      if (maxAge > 0)
+      {
+        query = query.Where(entry => entry.Age <= maxAge);
       }
 
       return await query.ToListAsync();
