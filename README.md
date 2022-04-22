@@ -25,6 +25,13 @@ An API for lists of available cats and dogs at a shelter.
 * Create a <code>appsettings.json</code> file in the root directory of the project folder. And add the following code replacing anything in square brackets with the information it represents specific to the project database:
 ```
 {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Port=3306;database=[DATABASE-NAME-HERE];uid=[USER-ID-HERE];pwd=[YOUR-PASSWORD-HERE];"
   }
@@ -35,8 +42,16 @@ An API for lists of available cats and dogs at a shelter.
 Example of complete appsettings.json:
 ```
 {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=to_do_list;uid=root;pwd=MySuperStrongPassword;"
+    "DefaultConnection": "Server=localhost;Port=3306;database=animal_shelter;uid=root;pwd=strongpassword;"
   }
 }
 
